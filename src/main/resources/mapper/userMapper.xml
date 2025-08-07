@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.board.users.mapper.UserMapper">  
+  <!-- 목록조회 -->
+  <select id="getUserList"  
+          resultType = "com.board.users.domain.UserDTO" >
+  
+    SELECT USERID, PASSWD, USERNAME, EMAIL, UPOINT, INDATE
+    FROM TUSER
+    ORDER BY USERID ASC
+  
+  </select>
+  
+  <!-- 메뉴조회 -->
+  <select id="getUser"
+          resultType = "com.board.users.domain.UserDTO" >
+    
+    SELECT  USERID, PASSWD, USERNAME, EMAIL, UPOINT, INDATE
+     FROM    TUSER
+     WHERE   USERID =  #{ userid }
+  
+  </select>
+  
+
+  <!-- 아이디 추가 -->
+  <insert id="insertUser">  
+   
+   INSERT INTO  User
+   (
+       USERID, PASSWD, USERNAME, EMAIL, UPOINT, INDATE
+   )
+   VALUES 
+   (
+       #{ userid    },
+       #{ passwd  },
+       #{ username   },   
+       #{ email   },   
+       #{ upoint   },   
+       #{ indate   }   
+   )   
+   
+  </insert> 
+  
+  <!-- 목록삭제 -->
+  <delete id="deleteUser">
+   
+     DELETE  FROM  TUSER
+      WHERE  USERID  = #{ USERID } 
+  
+  </delete>
+  
+  <!-- 메뉴 수정 -->
+  <update id="update">
+   
+     UPDATE   TUSER 
+      SET     PASSWD  = #{ passwd },
+      SET     USERNAME  = #{ username },
+      SET        EMAIL   = #{ email  }
+      WHERE   USERID = #{ userid }
+  
+  </update>
+  
+  
+  
+</mapper>
