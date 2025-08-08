@@ -9,6 +9,7 @@ public class UserDTO {
 	private  int  upoint;
 	private  String  indate;
 	
+	//Getter Setter
 	public String getUserid() {
 		return userid;
 	}
@@ -45,8 +46,9 @@ public class UserDTO {
 	public void setIndate(String indate) {
 		this.indate = indate;
 	}
+	
+	//Constructor
 	public UserDTO() {
-		super();
 	}
 	public UserDTO(String userid, String passwd, String username, String email, int upoint, String indate) {
 		this.userid = userid;
@@ -56,6 +58,8 @@ public class UserDTO {
 		this.upoint = upoint;
 		this.indate = indate;
 	}
+	
+	//toString
 	@Override
 	public String toString() {
 		return "UserDTO [userid=" + userid + ", passwd=" + passwd + ", username=" + username + ", email=" + email

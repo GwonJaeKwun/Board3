@@ -34,8 +34,8 @@
 	  <table>
 	    <tr>
 	      <td>비밀번호</td>
-	      <td><input type="text" name="passwd"  maxlength="12" 
-	                value="${ user.passwd }" readonly /></td>
+	      <td><input type="password" name="pwd1"  maxlength="12" 
+	                value="${ user.passwd }" /></td>
 	    </tr>
 	    <tr>
 	      <td>이름</td>

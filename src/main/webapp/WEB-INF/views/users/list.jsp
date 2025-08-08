@@ -27,7 +27,7 @@
        }      
    }
    
-   td[colspan="5"] {
+   td[colspan] {
        text-align : right; 
    }  	   
    
@@ -42,35 +42,33 @@
 </head>
 <body>
   <main>
-	<h2>메뉴 목록</h2>
+	<h2>사용자 목록</h2>
 	<table>
 	  <tr>
-	    <td>userid</td>
-	    <td>passwd</td>
-	    <td>username</td>
-	    <td>email</td>
-	    <td>upoint</td>
-	    <td>indate</td>
+	    <td>Userid</td>	 
+	    <td>Username</td>
+	    <td>Email</td>
+	    <td>Upoint</td>
+	    <td>Indate</td>
 	    <td>삭제</td>
 	    <td>수정</td>
 	  </tr>
 	  
 	  <tr>
-	    <td colspan="5">
-	      <a href="/Users/WriteForm">계정 추가</a>
+	    <td colspan="7">
+	      <a href="/Users/WriteForm">새 사용자 추가</a>	 
 	    </td>
 	  </tr>
 	
 	  <c:forEach  var="user" items = "${ userList }" >
 	  <tr>
-	    <td>${ user.userid   }</td>	   
-	    <td>${ user.passwd   }</td>	   
-	    <td>${ user.username   }</td>	   
-	    <td>${ user.email   }</td>	   
+	    <td>${ user.userid   }</td>
+	    <td>${ user.username }</td>
+	    <td>${ user.email    }</td>	   
 	    <td>${ user.upoint   }</td>	   
 	    <td>${ user.indate   }</td>	   
-	    <td><a href="/Users/Delete?user.userid=${user.userid}">삭제</a></td>
-	    <td><a href="/Users/UpdateForm?user.userid=${user.userid}">수정</a></td>
+	    <td><a href="/Users/Delete?userid=${user.userid}">삭제</a></td>
+	    <td><a href="/Users/UpdateForm?userid=${user.userid}">수정</a></td>
 	  </tr>
 	  </c:forEach>
 	  

@@ -29,16 +29,20 @@
 </head>
 <body>
   <main>
-	<h2>새 계정 추가</h2>
+	<h2>새 사용자 추가</h2>
 	<form action="/Users/Write" method="POST">
 	  <table>
 	    <tr>
-	      <td>아이디</td>
+	      <td>아이디(6~12)</td>
 	      <td><input type="text" name="userid"  maxlength="12" /></td>
 	    </tr>
 	    <tr>
-	      <td>비밀번호</td>
-	      <td><input type="text" name="passwd" /></td>
+	      <td>암호</td>
+	      <td><input type="password" name="passwd" id="pwd1"/></td>
+	    </tr>
+	    <tr>
+	      <td>암호확인</td>
+	      <td><input type="password" id="pwd2" /></td>
 	    </tr>
 	    <tr>
 	      <td>이름</td>
@@ -47,14 +51,6 @@
 	    <tr>
 	      <td>이메일</td>
 	      <td><input type="text" name="email" /></td>
-	    </tr>
-	    <tr>
-	      <td>포인트</td>
-	      <td><input type="number" name="upoint" /></td>
-	    </tr>
-	    <tr>
-	      <td>날짜</td>
-	      <td><input type="text" name="indate" date="sysdate"/></td>
 	    </tr>
 	    <tr>	      
 	      <td colspan="2">
@@ -66,59 +62,73 @@
   </main>	
     
   <script>
+
     const  formEl = document.querySelectorAll("form")[0];
     
     formEl.addEventListener('submit', function(e) {
     	// alert('ok')
+    	// 아이디 
     	const  inputEl1 = document.querySelector('[name="userid"]')
-    	if( inputEl1.value.trim() == '' ) {
-    		alert('아이디가 입력되지 않았습니다')
+    	if( inputEl1.value.trim().length < 6 
+    		 || inputEl1.value.trim().length > 12 ) {
+    		alert('아이디는 6~12 자 사이입니다')
     		e.stopPropagation();  // 이벤트 버블일 방지
     		e.preventDefault();   // 이벤트를 취소 
     		inputEl1.focus();
     		return false
     	} 
     	
-    	const  inputEl2 = document.querySelector('[name="passwd"]')
+    	// 암호
+    	const  inputEl2 = document.querySelector('#pwd1')
     	if( inputEl2.value.trim() == '' ) {
-    		alert('비밀번호가 입력되지 않았습니다')
+    		alert('암호가 입력되지 않았습니다')
     		e.stopPropagation();
     		e.preventDefault();
     		inputEl2.focus();
     		return false
     	}
     	
-    	const  inputEl3 = document.querySelector('[name="username"]')
+    	// 암호확인
+    	const  inputEl3 = document.querySelector('#pwd2')
     	if( inputEl3.value.trim() == '' ) {
-    		alert('닉네임이 입력되지 않았습니다')
+    		alert('암호확인이 입력되지 않았습니다')
     		e.stopPropagation();
     		e.preventDefault();
     		inputEl3.focus();
     		return false
-    	} 
-    	const  inputEl4 = document.querySelector('[name="email"]')
+    	}
+    	
+    	// 암호 == 암호확인
+    	if( inputEl2.value != inputEl3.value ) {
+    		alert('암호가 일치하지 않습니다')
+    		e.stopPropagation();
+    		e.preventDefault();
+    		inputEl3.focus();
+    		return false
+    	}
+		
+    	// 이름
+    	const  inputEl4 = document.querySelector('[name="username"]')
     	if( inputEl4.value.trim() == '' ) {
-    		alert('이메일이 입력되지 않았습니다')
+    		alert('이름이 입력되지 않았습니다')
     		e.stopPropagation();
     		e.preventDefault();
     		inputEl4.focus();
     		return false
     	} 
-    	const  inputEl5 = document.querySelector('[name="upoint"]')
+    	
+    	// 이메일
+    	const  inputEl5 = document.querySelector('[name="email"]')
     	if( inputEl5.value.trim() == '' ) {
-    		alert('메뉴순서가 입력되지 않았습니다')
+    		alert('이름이 입력되지 않았습니다')
     		e.stopPropagation();
     		e.preventDefault();
     		inputEl5.focus();
     		return false
-    		
-        const inputEl6 = document.querySelector('[name="indtate"]')
-    	if(inputEl6 const now = new Date());
     	} 
-
     })
     
-    
+
   </script>
   
   

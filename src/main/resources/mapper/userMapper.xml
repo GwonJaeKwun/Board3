@@ -5,61 +5,45 @@
   <select id="getUserList"  
           resultType = "com.board.users.domain.UserDTO" >
   
-    SELECT USERID, PASSWD, USERNAME, EMAIL, UPOINT, INDATE
-    FROM TUSER
-    ORDER BY USERID ASC
+     SELECT      USERID,  
+                 PASSWD,  
+                 USERNAME,
+                 EMAIL,
+                 UPOINT,
+                 TO_CHAR(INDATE, 'YYYY-MM-DD DY') INDATE
+      FROM       TUSER
+      ORDER  BY  INDATE ASC
   
   </select>
   
-  <!-- 메뉴조회 -->
-  <select id="getUser"
-          resultType = "com.board.users.domain.UserDTO" >
-    
-    SELECT  USERID, PASSWD, USERNAME, EMAIL, UPOINT, INDATE
-     FROM    TUSER
-     WHERE   USERID =  #{ userid }
+  <insert  id="insertUser">
+    INSERT INTO TUSER (
+	    USERID,
+	    PASSWD,
+	    USERNAME,
+	    EMAIL,
+	    UPOINT,
+	    INDATE
+	) VALUES (
+	    #{ userid   },
+	    #{ passwd   },
+	    #{ username },
+	    #{ email    },
+	    1000,
+	    sysdate
+	)
   
-  </select>
+  </insert>
   
-
-  <!-- 아이디 추가 -->
-  <insert id="insertUser">  
-   
-   INSERT INTO  User
-   (
-       USERID, PASSWD, USERNAME, EMAIL, UPOINT, INDATE
-   )
-   VALUES 
-   (
-       #{ userid    },
-       #{ passwd  },
-       #{ username   },   
-       #{ email   },   
-       #{ upoint   },   
-       #{ indate   }   
-   )   
-   
-  </insert> 
+  <delete  id="deleteUser">
   
-  <!-- 목록삭제 -->
-  <delete id="deleteUser">
-   
-     DELETE  FROM  TUSER
-      WHERE  USERID  = #{ USERID } 
+    DELETE   FROM    TUSER
+     WHERE   USERID  =  #{userid} 
   
   </delete>
   
-  <!-- 메뉴 수정 -->
-  <update id="update">
-   
-     UPDATE   TUSER 
-      SET     PASSWD  = #{ passwd },
-      SET     USERNAME  = #{ username },
-      SET        EMAIL   = #{ email  }
-      WHERE   USERID = #{ userid }
-  
-  </update>
-  
-  
-  
 </mapper>
+
+
+
+
