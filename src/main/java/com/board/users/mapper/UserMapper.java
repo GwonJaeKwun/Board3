@@ -11,16 +11,12 @@ public interface UserMapper {
 
 	List<UserDTO> getUserList();
 
-	void insertUser2(UserDTO userDTO);
-
 	void insertUser(UserDTO userDTO);
 
 	void deleteUser(UserDTO userDTO);
 
 	UserDTO getUser(UserDTO userDTO);
 
-	void update(UserDTO userDTO);
-
-
+	void updateUser(UserDTO userDTO);
 
 }

@@ -16,9 +16,13 @@
    <a href="/test">Test</a>
    <hr>
    
-   <a href="/Users/List">계정 목록</a><br>
-   <a href="/Users/WriteForm">새 계정 추가</a><br>
+   <a href="/Menus/List">메뉴 목록</a><br>
+   <a href="/Menus/WriteForm">새 메뉴 추가</a><br>
+   <hr>
+   <a href="/Users/List">사용자 목록</a><br />
+   <a href="/Users/WriteForm">새 사용자 추가</a><br />
   </main>
+   
 </body>
 </html>
 

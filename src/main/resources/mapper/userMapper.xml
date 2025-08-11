@@ -10,9 +10,30 @@
                  USERNAME,
                  EMAIL,
                  UPOINT,
+                 CASE  
+                   WHEN  UPOINT BETWEEN 0      AND      50000  THEN  '새싹회원'
+                   WHEN  UPOINT BETWEEN 50001  AND     100000  THEN  '나무회원'
+                   WHEN  UPOINT BETWEEN 100001 AND 9999999999  THEN  '숲회원'                 
+                 END AS MEMLEVEL,
                  TO_CHAR(INDATE, 'YYYY-MM-DD DY') INDATE
-      FROM       TUSER
+      FROM       TUSER 
       ORDER  BY  INDATE ASC
+  
+  </select>
+  
+  <!-- getUser -->
+  <select  id="getUser" 
+           resultType = "com.board.users.domain.UserDTO" >
+     
+     SELECT      USERID,  
+                 PASSWD,  
+                 USERNAME,
+                 EMAIL,
+                 UPOINT,
+                 TO_CHAR(INDATE, 'YYYY-MM-DD DY') INDATE
+      FROM       TUSER  
+     WHERE       USERID =  #{  userid  }  
+  
   
   </select>
   
@@ -41,6 +62,16 @@
      WHERE   USERID  =  #{userid} 
   
   </delete>
+  
+  <update  id="updateUser">
+  
+  	UPDATE   TUSER
+  	 SET     PASSWD    = #{ passwd   },
+  	         USERNAME  = #{ username },  
+  	         EMAIL     = #{ email    }
+  	 WHERE   USERID    = #{ userid   }
+  
+  </update>
   
 </mapper>
 

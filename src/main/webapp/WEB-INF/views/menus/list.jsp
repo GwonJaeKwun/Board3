@@ -27,7 +27,7 @@
        }      
    }
    
-   td[colspan] {
+   td[colspan="5"] {
        text-align : right; 
    }  	   
    
@@ -42,33 +42,30 @@
 </head>
 <body>
   <main>
-	<h2>사용자 목록</h2>
+	<h2>메뉴 목록</h2>
 	<table>
 	  <tr>
-	    <td>Userid</td>	 
-	    <td>Username</td>
-	    <td>Email</td>
-	    <td>등급</td>
-	    <td>Indate</td>
+	    <td>Menu_id</td>
+	    <td>Menu_name</td>
+	    <td>Menu_seq</td>
 	    <td>삭제</td>
 	    <td>수정</td>
 	  </tr>
 	  
 	  <tr>
-	    <td colspan="7">
-	      <a href="/Users/WriteForm">새 사용자 추가</a>	 
+	    <td colspan="5">
+	      <a href="/Menus/WriteForm">새 메뉴 추가</a>
+	      <a href="/Menus/WriteForm2">새 메뉴 추가2</a>
 	    </td>
 	  </tr>
 	
-	  <c:forEach  var="user" items = "${ userList }" >
+	  <c:forEach  var="menu" items = "${ menuList }" >
 	  <tr>
-	    <td>${ user.userid    }</td>
-	    <td>${ user.username  }</td>
-	    <td>${ user.email     }</td>	   
-	    <td>${ user.memlevel  }</td>	   
-	    <td>${ user.indate    }</td>	   
-	    <td><a href="/Users/Delete?userid=${user.userid}">삭제</a></td>
-	    <td><a href="/Users/UpdateForm?userid=${user.userid}">수정</a></td>
+	    <td>${ menu.menu_id   }</td>
+	    <td>${ menu.menu_name }</td>
+	    <td>${ menu.menu_seq  }</td>	   
+	    <td><a href="/Menus/Delete?menu_id=${menu.menu_id}">삭제</a></td>
+	    <td><a href="/Menus/UpdateForm?menu_id=${menu.menu_id}">수정</a></td>
 	  </tr>
 	  </c:forEach>
 	  
